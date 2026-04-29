@@ -3,6 +3,14 @@ import { motion } from 'framer-motion'
 export default function HeroSection() {
   return (
     <section className="relative isolate min-h-[100svh] overflow-hidden">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-[2]"
+        style={{
+          background:
+            'radial-gradient(ellipse 70% 55% at 50% 50%, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.15) 75%, rgba(0,0,0,0) 100%)',
+        }}
+      />
       <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl flex-col items-center justify-center px-6 pt-28 pb-20 text-center">
         <motion.div
           initial={{ opacity: 0, y: 16 }}

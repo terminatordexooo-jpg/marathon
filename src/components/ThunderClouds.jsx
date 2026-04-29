@@ -97,8 +97,8 @@ function Puffycloud({ seed, vec = new THREE.Vector3(), ...props }) {
       colliders={false}
     >
       <BallCollider args={[4]} />
-      <Cloud seed={seed} fade={30} speed={0.05} growth={4} segments={32} volume={6} opacity={0.55} bounds={[4, 3, 1]} />
-      <Cloud seed={seed + 1} fade={30} position={[0, 1, 0]} speed={0.25} growth={4} volume={9} opacity={0.85} bounds={[6, 2, 1]} />
+      <Cloud seed={seed} fade={30} speed={0.05} growth={4} segments={32} volume={6} opacity={0.4} bounds={[4, 3, 1]} />
+      <Cloud seed={seed + 1} fade={30} position={[0, 1, 0]} speed={0.25} growth={4} volume={9} opacity={0.6} bounds={[6, 2, 1]} />
       <pointLight position={[0, 0, 0.5]} ref={light} color="#a9c4ff" intensity={0} />
     </RigidBody>
   )
