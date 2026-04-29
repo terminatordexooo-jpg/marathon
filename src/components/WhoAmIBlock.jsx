@@ -36,7 +36,7 @@ export default function WhoAmIBlock() {
           >
             <div className="relative overflow-hidden rounded-[2rem] glass ring-glow">
               <video
-                src="/savi/savi-video.mp4"
+                src={`${import.meta.env.BASE_URL}savi/savi-video.mp4`}
                 autoPlay
                 muted
                 loop

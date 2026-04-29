@@ -5,22 +5,23 @@ const fadeIn = {
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
 }
 
+const BASE = import.meta.env.BASE_URL
 const phoneList = [
-  '/reviews/review-5.jpg',
-  '/reviews/review-6.jpg',
-  '/reviews/review-7.jpg',
-  '/reviews/review-8.jpg',
-  '/reviews/review-9.jpg',
-  '/reviews/review-10.jpg',
-  '/reviews/review-11.jpg',
-  '/reviews/review-12.jpg',
-  '/reviews/review-13.jpg',
-  '/reviews/review-14.jpg',
-  '/reviews/review-15.jpg',
-  '/reviews/review-16.jpg',
-  '/reviews/review-17.jpg',
-  '/reviews/review-18.jpg',
-  '/reviews/review-19.jpg',
+  `${BASE}reviews/review-5.jpg`,
+  `${BASE}reviews/review-6.jpg`,
+  `${BASE}reviews/review-7.jpg`,
+  `${BASE}reviews/review-8.jpg`,
+  `${BASE}reviews/review-9.jpg`,
+  `${BASE}reviews/review-10.jpg`,
+  `${BASE}reviews/review-11.jpg`,
+  `${BASE}reviews/review-12.jpg`,
+  `${BASE}reviews/review-13.jpg`,
+  `${BASE}reviews/review-14.jpg`,
+  `${BASE}reviews/review-15.jpg`,
+  `${BASE}reviews/review-16.jpg`,
+  `${BASE}reviews/review-17.jpg`,
+  `${BASE}reviews/review-18.jpg`,
+  `${BASE}reviews/review-19.jpg`,
 ]
 
 export default function TestimonialsBlock() {
@@ -129,7 +130,7 @@ export default function TestimonialsBlock() {
           <div className="md:col-span-5">
             <div className="overflow-hidden rounded-[1.75rem] glass ring-glow">
               <video
-                src="/savi/savi-video.mp4"
+                src={`${BASE}savi/savi-video.mp4`}
                 autoPlay
                 muted
                 loop
