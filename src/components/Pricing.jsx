@@ -1,65 +1,96 @@
 import FadeUp from './FadeUp.jsx'
 import PaymentButton from './PaymentButton.jsx'
 
-const stats = [
-  { k: 'PRICE', v: '$59' },
-  { k: 'DURATION', v: '21 days' },
-  { k: 'GUARANTEE', v: '100%' },
+const includes = [
+  '21 щоденний урок',
+  'Закритий Telegram-клуб',
+  'Тренування + харчування',
+  'Особистий супровід Savi',
+  'Доступ назавжди',
+  'Гарантія повернення 7 днів',
 ]
 
 export default function Pricing({ onSuccessPreview }) {
-  const price = import.meta.env.VITE_PRICE_USD || '59'
-
   return (
-    <section id="pricing" className="px-6 pt-20 pb-28">
-      <div className="mx-auto max-w-4xl">
-        <div className="mb-14">
-          <FadeUp y={60} duration={0.9}>
-            <div className="flex flex-wrap justify-center gap-4">
-              {stats.map((s) => (
-                <div
-                  key={s.k}
-                  className="rounded-2xl border border-white/[0.06] bg-white/[0.02] px-8 py-5 text-center backdrop-blur-sm transition-all hover:border-[#C967E8]/25"
-                >
-                  <p className="mb-1 text-[10px] font-semibold tracking-[3px] text-[#C967E8]">{s.k}</p>
-                  <p className="text-2xl font-black text-white">{s.v === '$59' ? `$${price}` : s.v}</p>
-                </div>
-              ))}
+    <section id="pricing" className="relative bg-ink px-6 py-32 text-parchment">
+      <div className="mx-auto max-w-7xl">
+        <FadeUp y={30} duration={0.9}>
+          <div className="mb-20 flex items-end justify-between border-b border-parchment/15 pb-6">
+            <p className="text-[10px] font-bold tracking-[3px] uppercase text-rust-light">
+              · ПРИЄДНАТИСЬ
+            </p>
+            <p className="text-[10px] font-bold tracking-[3px] uppercase text-parchment/40">
+              СТОРІНКА 04
+            </p>
+          </div>
+        </FadeUp>
+
+        <div className="grid items-center gap-12 md:grid-cols-12 md:gap-16">
+          <FadeUp y={30} duration={0.9} className="md:col-span-7">
+            <h2 className="font-display text-[clamp(2.5rem,6vw,80px)] leading-[0.92] text-parchment">
+              Готова{' '}
+              <span className="italic text-rust-light">почати?</span>
+            </h2>
+            <p className="mt-6 max-w-md text-[15px] leading-relaxed text-parchment/70">
+              Один платіж. 21 день. Доступ до закритого Telegram-клубу одразу
+              після оплати.
+            </p>
+
+            <div className="mt-12 flex items-baseline gap-6">
+              <span className="font-display text-[clamp(7rem,18vw,260px)] italic leading-[0.85] text-parchment">
+                499
+              </span>
+              <div>
+                <span className="block font-display text-3xl text-parchment">грн</span>
+                <span className="mt-2 block text-base text-parchment/50 line-through">1899</span>
+                <span className="mt-1 block rounded-full bg-rust px-3 py-1 text-[10px] font-bold tracking-[2px] uppercase text-parchment">
+                  −74%
+                </span>
+              </div>
             </div>
+          </FadeUp>
+
+          <FadeUp y={30} duration={0.9} delay={0.1} className="md:col-span-5">
+            <ul className="space-y-3 border-t border-parchment/15">
+              {includes.map((it) => (
+                <li
+                  key={it}
+                  className="flex items-baseline gap-4 border-b border-parchment/15 py-3.5 text-[14px] text-parchment/80"
+                >
+                  <span className="font-display text-base italic text-rust-light">✓</span>
+                  {it}
+                </li>
+              ))}
+            </ul>
+
+            <PaymentButton
+              onPreview={onSuccessPreview}
+              className="group mt-10 inline-flex w-full items-center justify-between gap-3 rounded-full bg-parchment px-7 py-5 text-left text-ink transition-all hover:bg-parchment-50"
+            >
+              <span>
+                <span className="block text-[10px] font-bold tracking-[3px] uppercase text-rust">
+                  ОТРИМАТИ ДОСТУП
+                </span>
+                <span className="block font-display text-2xl italic">499 грн · 21 день</span>
+              </span>
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-ink text-parchment transition-transform group-hover:translate-x-1">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </span>
+            </PaymentButton>
+
+            <p className="mt-5 text-center text-[11px] tracking-wide text-parchment/40">
+              Безпечна оплата · доступ одразу · повернення 7 днів
+            </p>
           </FadeUp>
         </div>
 
-        <FadeUp y={40} duration={0.9}>
-          <div className="relative overflow-hidden rounded-3xl border border-white/[0.06] bg-white/[0.02] px-8 py-16 text-center backdrop-blur-sm md:px-16">
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,103,232,0.12)_0%,transparent_70%)]" />
-            <h2 className="relative text-3xl font-bold tracking-tight text-white md:text-5xl">
-              Ready to{' '}
-              <span className="bg-gradient-to-r from-[#FA93FA] via-[#C967E8] to-[#983AD6] bg-clip-text text-transparent">
-                start
-              </span>
-              ?
-            </h2>
-            <p className="relative mx-auto mt-4 max-w-md text-lg text-white/50">
-              One payment. 21 days. Instant Telegram access after checkout.
-            </p>
-            <div className="relative mt-10 flex justify-center">
-              <PaymentButton
-                onPreview={onSuccessPreview}
-                className="group inline-flex items-center rounded-full border border-white/15 p-[3px] backdrop-blur-sm transition-all hover:border-white/25"
-              >
-                <span className="inline-flex items-center gap-3 rounded-full bg-white px-7 py-3.5 text-[15px] font-semibold text-black transition-all group-hover:bg-white/95">
-                  Get instant access
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-[#FA93FA] via-[#C967E8] to-[#983AD6]">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M5 12h14" />
-                      <path d="m12 5 7 7-7 7" />
-                    </svg>
-                  </span>
-                </span>
-              </PaymentButton>
-            </div>
-            <p className="relative mt-6 text-xs text-white/35">
-              Secure card checkout · LemonSqueezy · 7-day refund
+        <FadeUp y={20} duration={0.9} delay={0.3}>
+          <div className="mt-24 border-t border-parchment/15 pt-8 text-center">
+            <p className="font-script text-3xl text-rust-light">
+              чекаю тебе в клубі ·
             </p>
           </div>
         </FadeUp>

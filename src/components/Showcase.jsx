@@ -2,94 +2,91 @@ import FadeUp from './FadeUp.jsx'
 
 const cards = [
   {
-    title: 'Week 1 · Reset',
-    body: 'Morning anchor ritual, energy audit, clearing mental clutter.',
-    tags: ['Foundations', 'Rituals', 'Audit'],
-    grad: 'from-[#FA93FA]/40 via-[#C967E8]/30 to-[#010101]',
+    n: 'I',
+    title: 'Reset',
+    week: 'Тиждень 1',
+    body: 'Аудит харчування, ранкові ритуали, базові тренування. Запускаємо метаболізм без стресу.',
+    tags: ['Основи', 'Ритуали', 'Аудит'],
+    bg: 'from-rose-warm via-terracotta-light to-cream-200',
+    quote: '«Без жодної дієти. Просто звички, які залишаються.»',
   },
   {
-    title: 'Week 2 · Build',
-    body: 'Tiny habit stacking, nutrition without diets, movement you actually enjoy.',
-    tags: ['Habits', 'Nutrition', 'Movement'],
-    grad: 'from-[#C967E8]/40 via-[#983AD6]/30 to-[#010101]',
+    n: 'II',
+    title: 'Build',
+    week: 'Тиждень 2',
+    body: 'Тренування на сідниці і прес, харчування без зривів, дрібні звички, що залишаються.',
+    tags: ['Звички', 'Харчування', 'Сила'],
+    bg: 'from-terracotta-light via-rose-dust to-cream-200',
+    quote: '«Тіло змінюється, але голова — швидше.»',
   },
   {
-    title: 'Week 3 · Stick',
-    body: 'Relapse-proofing toolkit, your personal protocol, life after the marathon.',
-    tags: ['System', 'Protocol', 'Lifetime'],
-    grad: 'from-[#983AD6]/40 via-[#6B21A8]/30 to-[#010101]',
+    n: 'III',
+    title: 'Stick',
+    week: 'Тиждень 3',
+    body: 'Твій особистий протокол: як втримати результат, що робити з зривами, життя після марафону.',
+    tags: ['Система', 'Протокол', 'Назавжди'],
+    bg: 'from-terracotta via-terracotta-light to-cream-200',
+    quote: '«Це не марафон, це новий спосіб жити.»',
   },
 ]
 
 export default function Showcase() {
   return (
-    <section id="program" className="px-6 py-24">
-      <div className="mx-auto max-w-5xl">
-        <FadeUp y={60} duration={0.9}>
-          <p className="mb-3 text-center text-xs font-semibold tracking-[4px] uppercase text-[#C967E8]">Program</p>
-          <h2 className="mb-16 text-center text-3xl font-bold tracking-tight text-white md:text-5xl">
-            What's inside
-          </h2>
+    <section id="program" className="relative bg-cream px-6 py-28">
+      <div className="mx-auto max-w-6xl">
+        <FadeUp y={40} duration={0.9}>
+          <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
+            <div>
+              <p className="mb-3 text-[11px] font-bold tracking-[4px] uppercase text-terracotta">
+                · ПРОГРАМА
+              </p>
+              <h2 className="font-display text-[clamp(2.5rem,6vw,72px)] font-medium leading-[0.95] tracking-tight text-ink">
+                Що{' '}
+                <span className="font-display italic text-terracotta">всередині</span>
+              </h2>
+            </div>
+            <p className="max-w-xs text-[14px] leading-relaxed text-ink/60">
+              Три тижні. Три фази. Один результат — система, з якою ти не зриваєшся.
+            </p>
+          </div>
         </FadeUp>
 
-        <div className="grid gap-5 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-3">
           {cards.map((c, i) => (
-            <FadeUp key={c.title} delay={0.08 * i} y={40}>
-              <div className="group relative block overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm transition-all hover:border-[#C967E8]/30 hover:bg-white/[0.04]">
-                <div className="relative h-48 overflow-hidden">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${c.grad}`} />
-                  <AnimatedPreview grad={c.grad} />
-                  <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-8 bg-gradient-to-b from-[#010101]/80 to-transparent" />
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-16 bg-gradient-to-t from-[#010101] to-transparent" />
+            <FadeUp key={c.title} delay={0.08 * i} y={30}>
+              <article className="group relative h-full overflow-hidden rounded-3xl border border-ink/10 bg-cream-50 transition-all hover:shadow-card">
+                <div className={`relative h-56 overflow-hidden bg-gradient-to-br ${c.bg}`}>
+                  <span className="absolute left-6 top-5 font-display text-7xl italic text-cream/95 drop-shadow">
+                    {c.n}
+                  </span>
+                  <span className="absolute right-5 top-5 rounded-full bg-cream/85 px-3 py-1 text-[10px] font-semibold tracking-[2px] uppercase text-ink/70 backdrop-blur">
+                    {c.week}
+                  </span>
+                  <div className="absolute -bottom-12 -right-8 h-44 w-44 rounded-full bg-terracotta/30 blur-2xl" />
+                  <p className="absolute bottom-5 left-6 right-12 font-display text-base italic leading-snug text-cream/95">
+                    {c.quote}
+                  </p>
                 </div>
+
                 <div className="p-7">
-                  <div className="mb-2 flex items-center justify-between">
-                    <h3 className="text-lg font-bold text-white">{c.title}</h3>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white/30 transition-colors group-hover:text-[#C967E8]">
-                      <path d="M7 17 17 7" />
-                      <path d="M7 7h10v10" />
-                    </svg>
-                  </div>
-                  <p className="mb-4 text-[15px] leading-relaxed text-white/50">{c.body}</p>
-                  <div className="flex flex-wrap gap-2">
+                  <h3 className="font-display text-3xl text-ink">{c.title}</h3>
+                  <p className="mt-2 text-[14px] leading-relaxed text-ink/65">{c.body}</p>
+                  <div className="mt-5 flex flex-wrap gap-2">
                     {c.tags.map((t) => (
-                      <span key={t} className="rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 text-xs font-medium text-white/50">
+                      <span
+                        key={t}
+                        className="rounded-full border border-ink/15 bg-cream px-3 py-1 text-[11px] font-medium text-ink/65"
+                      >
                         {t}
                       </span>
                     ))}
                   </div>
                 </div>
-              </div>
+              </article>
             </FadeUp>
           ))}
         </div>
       </div>
     </section>
-  )
-}
-
-function AnimatedPreview({ grad }) {
-  // faux 'page' scrolling like the reference's iframe preview
-  return (
-    <div
-      className="absolute left-1/2 top-0 origin-top animate-previewScroll"
-      style={{ width: 1200, marginLeft: -600 }}
-    >
-      <div className="space-y-6 p-12" style={{ width: 1200, height: 2400 }}>
-        <div className={`h-56 rounded-xl bg-gradient-to-br ${grad} opacity-80`} />
-        <div className="h-8 w-3/5 rounded-full bg-white/10" />
-        <div className="h-5 w-4/5 rounded-full bg-white/5" />
-        <div className="h-5 w-3/4 rounded-full bg-white/5" />
-        <div className="grid grid-cols-3 gap-6 pt-6">
-          {[0,1,2,3,4,5].map((i) => (
-            <div key={i} className="h-48 rounded-xl bg-white/[0.04] border border-white/[0.06]" />
-          ))}
-        </div>
-        <div className="h-8 w-2/5 rounded-full bg-white/10" />
-        <div className="h-4 w-3/5 rounded-full bg-white/5" />
-        <div className="h-4 w-1/2 rounded-full bg-white/5" />
-        <div className={`h-96 rounded-2xl bg-gradient-to-br ${grad} opacity-60`} />
-      </div>
-    </div>
   )
 }

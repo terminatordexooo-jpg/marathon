@@ -1,19 +1,14 @@
 import { useEffect, useState } from 'react'
-import CursorGlow from './components/CursorGlow.jsx'
 import ScrollProgress from './components/ScrollProgress.jsx'
-import Hero from './components/Hero.jsx'
-import Process from './components/Process.jsx'
-import Showcase from './components/Showcase.jsx'
-import TerminalSection from './components/TerminalSection.jsx'
-import Pricing from './components/Pricing.jsx'
+import AuroraBackdrop from './components/AuroraBackdrop.jsx'
+import ThunderClouds from './components/ThunderClouds.jsx'
+import HeroSection from './components/HeroSection.jsx'
+import WhoAmIBlock from './components/WhoAmIBlock.jsx'
+import SystemBlock from './components/SystemBlock.jsx'
+import TestimonialsBlock from './components/TestimonialsBlock.jsx'
+import PricingBlock from './components/PricingBlock.jsx'
 import Footer from './components/Footer.jsx'
 import SuccessModal from './components/SuccessModal.jsx'
-
-function Divider() {
-  return (
-    <div className="mx-auto my-4 h-px w-full max-w-5xl bg-gradient-to-r from-transparent via-[#C967E8]/30 to-transparent" />
-  )
-}
 
 export default function App() {
   const [successOpen, setSuccessOpen] = useState(false)
@@ -26,20 +21,18 @@ export default function App() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-[#010101] text-white">
-      <CursorGlow />
-      <ScrollProgress />
-      <Hero />
-      <div className="relative bg-[#010101]">
-        <Process />
-        <Divider />
-        <Showcase />
-        <Divider />
-        <TerminalSection />
-        <Divider />
-        <Pricing onSuccessPreview={() => setSuccessOpen(true)} />
-        <Footer />
+    <div className="relative min-h-screen overflow-hidden bg-night-900 text-cream">
+      <div className="pointer-events-none fixed inset-0 z-0">
+        <ThunderClouds />
       </div>
+      <AuroraBackdrop />
+      <ScrollProgress />
+      <HeroSection />
+      <WhoAmIBlock />
+      <SystemBlock />
+      <TestimonialsBlock />
+      <PricingBlock onSuccessPreview={() => setSuccessOpen(true)} />
+      <Footer />
       <SuccessModal open={successOpen} onClose={() => setSuccessOpen(false)} />
     </div>
   )
