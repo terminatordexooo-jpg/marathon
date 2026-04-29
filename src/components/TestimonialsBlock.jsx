@@ -126,6 +126,73 @@ export default function TestimonialsBlock() {
             <p className="mt-4 font-script text-2xl text-rose-light">
               Я — результат того, що даю.
             </p>
+
+            <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-3">
+              {[
+                {
+                  k: 'Спорт',
+                  v: 'тренування 4–5×',
+                  d: 'на тиждень, без виснаження',
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+                      <path d="M6.5 6.5L17.5 17.5" />
+                      <path d="M3 9l3-3 3 3-3 3z" />
+                      <path d="M21 15l-3 3-3-3 3-3z" />
+                      <path d="M2 12h2" />
+                      <path d="M20 12h2" />
+                    </svg>
+                  ),
+                },
+                {
+                  k: 'Харчування',
+                  v: 'без зривів',
+                  d: 'смачно і стабільно',
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+                      <path d="M12 2C8 6 8 11 12 14c4-3 4-8 0-12z" />
+                      <path d="M5 13c0 4 3 8 7 8s7-4 7-8H5z" />
+                      <path d="M12 13v8" />
+                    </svg>
+                  ),
+                },
+                {
+                  k: 'Мислення',
+                  v: 'без крайнощів',
+                  d: 'через любов до себе',
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+                      <path d="M12 21s-7-4.5-7-11a5 5 0 019-3 5 5 0 019 3c0 6.5-7 11-7 11h-4z" />
+                      <path d="M12 8v4" />
+                    </svg>
+                  ),
+                },
+              ].map((p) => (
+                <div
+                  key={p.k}
+                  className="group relative overflow-hidden rounded-2xl border border-white/8 bg-black/40 p-4 backdrop-blur-md transition-colors hover:border-rose/40"
+                >
+                  <div className="absolute -top-10 -right-10 h-24 w-24 rounded-full bg-gradient-to-br from-rose to-plum opacity-0 blur-2xl transition-opacity group-hover:opacity-30" />
+                  <div className="relative flex items-center gap-3">
+                    <div className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-rose/20 to-plum/20 text-rose-light">
+                      {p.icon}
+                    </div>
+                    <div>
+                      <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-cream/55">
+                        {p.k}
+                      </p>
+                      <p className="font-display text-lg leading-tight text-cream">{p.v}</p>
+                    </div>
+                  </div>
+                  <p className="relative mt-3 text-xs leading-snug text-cream/55">{p.d}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-5 flex items-center gap-3 text-[11px] uppercase tracking-[0.25em] text-cream/45">
+              <span className="h-px flex-1 bg-gradient-to-r from-transparent via-cream/15 to-transparent" />
+              <span>= система Body by Savi</span>
+              <span className="h-px flex-1 bg-gradient-to-r from-transparent via-cream/15 to-transparent" />
+            </div>
           </div>
           <div className="md:col-span-5">
             <div className="overflow-hidden rounded-[1.75rem] glass ring-glow">

@@ -31,7 +31,7 @@ export default function ThunderClouds() {
       </Clouds>
       <mesh scale={200}>
         <sphereGeometry />
-        <meshStandardMaterial color="#16192c" roughness={0.85} side={THREE.BackSide} />
+        <meshStandardMaterial color="#070612" roughness={0.9} side={THREE.BackSide} />
       </mesh>
       <Environment files="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/blue_lagoon_night_1k.hdr" />
     </Canvas>

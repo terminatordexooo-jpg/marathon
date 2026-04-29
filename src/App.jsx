@@ -25,6 +25,7 @@ export default function App() {
       <div className="pointer-events-none fixed inset-0 z-0">
         <ThunderClouds />
       </div>
+      <div className="pointer-events-none fixed inset-0 z-[1] bg-black/55" />
       <AuroraBackdrop />
       <ScrollProgress />
       <HeroSection />
