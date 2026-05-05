@@ -32,10 +32,6 @@ export default function HeroSection() {
         >
           Body by{' '}
           <span className="font-display italic font-bold text-gradient-rose">Savi</span>
-          <br />
-          <span className="mt-5 inline-block text-sm font-medium uppercase tracking-[0.5em] text-rose-light/85 sm:text-base sm:tracking-[0.6em]">
-            клуб змін
-          </span>
         </motion.h1>
 
         <motion.p
