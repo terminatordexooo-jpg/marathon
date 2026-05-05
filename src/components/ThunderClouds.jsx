@@ -1,8 +1,7 @@
 import * as THREE from 'three'
-import { useEffect, useRef, useState } from 'react'
+import { Suspense, useEffect, useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Clouds, Cloud, Environment, PerspectiveCamera } from '@react-three/drei'
-import { CuboidCollider, BallCollider, Physics, RigidBody } from '@react-three/rapier'
+import { Clouds, Cloud, PerspectiveCamera } from '@react-three/drei'
 import { random } from 'maath'
 
 export default function ThunderClouds() {
@@ -18,22 +17,23 @@ export default function ThunderClouds() {
   }, [])
 
   return (
-    <Canvas dpr={[1, 1.5]} gl={{ antialias: true }}>
+    <Canvas dpr={[0.8, 1.4]} gl={{ antialias: true, powerPreference: 'high-performance' }}>
       <CameraRig scrollRef={scroll} />
-      <ambientLight intensity={Math.PI / 2.7} />
-      <Clouds limit={300} material={THREE.MeshLambertMaterial}>
-        <Physics gravity={[0, 0, 0]}>
-          <Puffycloud seed={10} position={[40, 0, 0]} />
-          <Puffycloud seed={20} position={[0, 40, 0]} />
-          <Puffycloud seed={30} position={[0, 0, -40]} />
-          <CuboidCollider position={[0, -15, 0]} args={[400, 10, 400]} />
-        </Physics>
-      </Clouds>
-      <mesh scale={200}>
-        <sphereGeometry />
-        <meshStandardMaterial color="#070612" roughness={0.9} side={THREE.BackSide} />
-      </mesh>
-      <Environment files="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/blue_lagoon_night_1k.hdr" />
+      <ambientLight intensity={Math.PI / 2.5} />
+      <Suspense fallback={null}>
+        <Clouds limit={300} material={THREE.MeshLambertMaterial}>
+          <FloatingCloud seed={10} basePosition={[18, 10, -2]} drift={[1.8, 1.0, 1.2]} speedMul={1} />
+          <FloatingCloud seed={20} basePosition={[-16, -8, -6]} drift={[1.6, 1.1, 0.9]} speedMul={0.8} />
+          <FloatingCloud seed={30} basePosition={[4, 16, -18]} drift={[1.4, 1.4, 1.5]} speedMul={1.2} />
+          <FloatingCloud seed={40} basePosition={[-22, 2, 8]} drift={[1.2, 0.8, 1.3]} speedMul={0.7} />
+          <FloatingCloud seed={50} basePosition={[14, -10, 14]} drift={[1.7, 0.9, 0.8]} speedMul={1.1} />
+          <FloatingCloud seed={60} basePosition={[-6, 12, 20]} drift={[1.3, 1.0, 1.0]} speedMul={0.9} />
+        </Clouds>
+        <mesh scale={200}>
+          <sphereGeometry />
+          <meshStandardMaterial color="#070612" roughness={0.9} side={THREE.BackSide} />
+        </mesh>
+      </Suspense>
     </Canvas>
   )
 }
@@ -66,40 +66,36 @@ function CameraRig({ scrollRef }) {
   })
   return (
     <PerspectiveCamera ref={cam} makeDefault fov={70} position={[0, 4, 64]}>
-      <spotLight position={[0, 40, 2]} angle={0.5} decay={1} distance={45} penumbra={1} intensity={1200} />
-      <spotLight position={[-19, 0, -8]} color="#7aa2ff" angle={0.25} decay={0.75} distance={185} penumbra={-1} intensity={260} />
+      <spotLight position={[0, 40, 2]} angle={0.5} decay={1} distance={45} penumbra={1} intensity={900} />
+      <spotLight position={[-19, 0, -8]} color="#9a8cff" angle={0.25} decay={0.75} distance={185} penumbra={-1} intensity={210} />
     </PerspectiveCamera>
   )
 }
 
-function Puffycloud({ seed, vec = new THREE.Vector3(), ...props }) {
-  const api = useRef()
-  const light = useRef()
-  const [flash] = useState(() => new random.FlashGen({ count: 5, minDuration: 80, maxDuration: 240 }))
-  const contact = (payload) =>
-    payload.other.rigidBodyObject?.userData?.cloud &&
-    payload.totalForceMagnitude / 1000 > 140 &&
-    flash.burst()
+function FloatingCloud({ seed, basePosition, drift, speedMul = 1 }) {
+  const group = useRef(null)
+  const light = useRef(null)
+  const [flash] = useState(() => new random.FlashGen({ count: 4, minDuration: 90, maxDuration: 260 }))
+  const phase = useRef(seed * 0.137)
+
   useFrame((state, delta) => {
+    if (!group.current) return
+    const t = state.clock.elapsedTime * speedMul + phase.current
+    group.current.position.x = basePosition[0] + Math.sin(t * 0.18) * drift[0]
+    group.current.position.y = basePosition[1] + Math.cos(t * 0.22) * drift[1]
+    group.current.position.z = basePosition[2] + Math.sin(t * 0.15 + 1.4) * drift[2]
+    group.current.rotation.y += delta * 0.04 * speedMul
+
+    if (Math.random() < 0.0014 * speedMul) flash.burst()
     const impulse = flash.update(state.clock.elapsedTime, delta)
     if (light.current) light.current.intensity = impulse * 4000
-    api.current?.applyImpulse(vec.copy(api.current.translation()).negate().multiplyScalar(6))
   })
+
   return (
-    <RigidBody
-      ref={api}
-      userData={{ cloud: true }}
-      onContactForce={contact}
-      linearDamping={4}
-      angularDamping={1}
-      friction={0.1}
-      {...props}
-      colliders={false}
-    >
-      <BallCollider args={[4]} />
-      <Cloud seed={seed} fade={30} speed={0.05} growth={4} segments={32} volume={6} opacity={0.4} bounds={[4, 3, 1]} />
-      <Cloud seed={seed + 1} fade={30} position={[0, 1, 0]} speed={0.25} growth={4} volume={9} opacity={0.6} bounds={[6, 2, 1]} />
-      <pointLight position={[0, 0, 0.5]} ref={light} color="#a9c4ff" intensity={0} />
-    </RigidBody>
+    <group ref={group} position={basePosition}>
+      <Cloud seed={seed} fade={28} speed={0.06} growth={4} segments={32} volume={6} opacity={0.5} bounds={[4.5, 3.2, 1.2]} />
+      <Cloud seed={seed + 1} fade={28} position={[0, 1, 0]} speed={0.25} growth={4} volume={9} opacity={0.78} bounds={[6.5, 2.4, 1.2]} />
+      <pointLight ref={light} position={[0, 0, 0.5]} color="#a9c4ff" intensity={0} />
+    </group>
   )
 }

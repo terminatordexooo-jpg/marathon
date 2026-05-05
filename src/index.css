@@ -5,7 +5,7 @@
 @layer base {
   html { scroll-behavior: smooth; }
   body {
-    background-color: #020104;
+    background-color: #100B1F;
     color: #F4EEE4;
     font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -45,10 +45,11 @@
     border: 1px solid rgba(232,167,181,0.2);
   }
   .text-gradient-rose {
-    background: linear-gradient(135deg, #F2C9D2 0%, #E8A7B5 40%, #C7A9FF 100%);
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFD7E1 30%, #F8B5C5 60%, #C7A9FF 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    filter: drop-shadow(0 0 14px rgba(232,167,181,0.55));
   }
   .text-gradient-plum {
     background: linear-gradient(135deg, #F4EEE4 0%, #C7A9FF 60%, #9B6BFF 100%);
@@ -78,7 +79,36 @@
   border-radius: 9999px;
   filter: blur(80px);
   opacity: 0.55;
+  will-change: transform;
 }
 .aurora-rose { background: radial-gradient(circle, #E8A7B5 0%, transparent 65%); }
 .aurora-plum { background: radial-gradient(circle, #9B6BFF 0%, transparent 65%); }
 .aurora-terra { background: radial-gradient(circle, #C26F4A 0%, transparent 65%); }
+
+/* slow drift animations so background reads as a living gradient */
+@keyframes auroraDriftA {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(8vw, 6vh, 0) scale(1.12); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+@keyframes auroraDriftB {
+  0%   { transform: translate3d(0, 0, 0) scale(1.05); }
+  50%  { transform: translate3d(-7vw, -5vh, 0) scale(0.95); }
+  100% { transform: translate3d(0, 0, 0) scale(1.05); }
+}
+@keyframes auroraDriftC {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(5vw, -8vh, 0) scale(1.18); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+@keyframes hueShift {
+  0%   { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+.aurora-drift-a { animation: auroraDriftA 22s ease-in-out infinite; }
+.aurora-drift-b { animation: auroraDriftB 28s ease-in-out infinite; }
+.aurora-drift-c { animation: auroraDriftC 34s ease-in-out infinite; }
+.hue-flow { animation: hueShift 60s linear infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .aurora-drift-a, .aurora-drift-b, .aurora-drift-c, .hue-flow { animation: none; }
+}

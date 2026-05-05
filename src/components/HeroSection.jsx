@@ -8,39 +8,49 @@ export default function HeroSection() {
         className="pointer-events-none absolute inset-0 z-[2]"
         style={{
           background:
-            'radial-gradient(ellipse 70% 55% at 50% 50%, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.15) 75%, rgba(0,0,0,0) 100%)',
+            'radial-gradient(ellipse 90% 60% at 50% 50%, rgba(16,11,31,0.85) 0%, rgba(16,11,31,0.7) 40%, rgba(16,11,31,0.45) 65%, rgba(16,11,31,0.2) 85%, rgba(16,11,31,0) 100%)',
         }}
       />
-      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl flex-col items-center justify-center px-6 pt-28 pb-20 text-center">
+      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl flex-col items-center justify-center px-6 pt-24 pb-16 text-center sm:pt-28 sm:pb-20">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="glass-rose mb-8 inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs uppercase tracking-[0.18em] text-rose-light"
+          className="glass-rose mb-8 inline-flex items-center gap-2 whitespace-nowrap rounded-full px-3.5 py-1.5 text-[10px] uppercase tracking-[0.18em] text-rose-light sm:px-4 sm:py-2 sm:text-xs"
         >
-          <span className="h-2 w-2 animate-glowPulse rounded-full bg-rose" />
-          499 грн замість 1899 грн · перші 10 місць
+          <span className="h-1.5 w-1.5 animate-glowPulse rounded-full bg-rose sm:h-2 sm:w-2" />
+          <span className="sm:hidden">499 грн · перші 100 місць</span>
+          <span className="hidden sm:inline">499 грн замість 1899 грн · перші 100 місць</span>
         </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.05 }}
-          className="font-display text-5xl leading-[1.05] tracking-tight text-cream sm:text-6xl md:text-7xl lg:text-8xl"
+          className="text-[3.4rem] font-black leading-[1] tracking-tight text-white sm:text-7xl md:text-8xl lg:text-9xl"
+          style={{ WebkitFontSmoothing: 'antialiased' }}
         >
-          Body by <span className="italic text-gradient-rose">Savi</span>
+          Body by{' '}
+          <span className="font-display italic font-bold text-gradient-rose">Savi</span>
           <br />
-          <span className="font-script text-4xl text-rose-light sm:text-5xl md:text-6xl">клуб змін</span>
+          <span
+            className="font-display italic mt-2 inline-block text-4xl font-medium tracking-tight text-rose-light sm:text-6xl md:text-7xl"
+            style={{
+              textShadow:
+                '0 0 14px rgba(232,167,181,0.55), 0 0 32px rgba(232,167,181,0.35), 0 0 60px rgba(155,107,255,0.3)',
+            }}
+          >
+            клуб змін
+          </span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-7 max-w-xl text-base text-cream/70 sm:text-lg"
+          className="mt-8 max-w-xl text-base font-semibold text-white sm:mt-10 sm:text-lg"
         >
-          21-денний марафон з щоденними тренуваннями, харчуванням і
-          закритим Telegram-клубом — шлях до кращої версії себе.
+          Зроби перший крок до кращої версії себе.
         </motion.p>
 
         <motion.div
@@ -59,7 +69,7 @@ export default function HeroSection() {
             </span>
             <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-rose-light via-rose to-plum opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-30" />
           </a>
-          <span className="font-script text-base text-rose-light/80">
+          <span className="font-display italic text-base text-rose-light/80 tracking-wide">
             старт — одразу після оплати
           </span>
         </motion.div>
@@ -74,8 +84,6 @@ export default function HeroSection() {
           <span className="block h-10 w-px bg-gradient-to-b from-cream/40 to-transparent" />
         </motion.div>
       </div>
-
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-40 bg-gradient-to-b from-transparent to-night-900" />
     </section>
   )
 }

@@ -24,7 +24,7 @@ const includes = [
 
 export default function PricingBlock({ onSuccessPreview }) {
   return (
-    <section id="pricing" className="relative z-10 px-6 py-28 sm:py-36">
+    <section id="pricing" className="relative z-10 px-5 py-20 sm:px-6 sm:py-28 md:py-36">
       <div className="mx-auto max-w-6xl">
         <motion.div
           initial="hidden"
@@ -57,7 +57,7 @@ export default function PricingBlock({ onSuccessPreview }) {
               <div className="relative">
                 <span className="inline-flex items-center gap-2 rounded-full bg-cream/10 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-cream/80 backdrop-blur">
                   <span className="h-1.5 w-1.5 animate-glowPulse rounded-full bg-rose-light" />
-                  перші 10 місць
+                  перші 100 місць
                 </span>
 
                 <div className="mt-6 flex items-baseline gap-4">
@@ -69,7 +69,7 @@ export default function PricingBlock({ onSuccessPreview }) {
                     1899 грн
                   </span>
                 </div>
-                <p className="mt-3 font-script text-2xl text-rose-light">
+                <p className="mt-3 font-display italic text-2xl text-rose-light">
                   замість 1899 грн
                 </p>
 

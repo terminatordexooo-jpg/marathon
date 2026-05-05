@@ -7,7 +7,7 @@ const fadeIn = {
 
 export default function WhoAmIBlock() {
   return (
-    <section id="about" className="relative z-10 px-6 py-28 sm:py-36">
+    <section id="about" className="relative z-10 px-5 py-20 sm:px-6 sm:py-28 md:py-36">
       <div className="mx-auto max-w-6xl">
         <motion.div
           initial="hidden"
@@ -17,7 +17,7 @@ export default function WhoAmIBlock() {
           className="mb-14 max-w-3xl"
         >
           <span className="font-mono text-xs uppercase tracking-[0.3em] text-rose-light/70">
-            Блок 01 · знайомство
+            знайомство
           </span>
           <h2 className="mt-4 font-display text-4xl leading-tight text-cream sm:text-5xl md:text-6xl">
             Хто я? <em className="text-gradient-rose">І чому ти маєш</em>
@@ -45,15 +45,14 @@ export default function WhoAmIBlock() {
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-night-900/80 via-transparent to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-5">
-                <p className="font-script text-2xl text-rose-light">Savi</p>
+                <p className="font-display italic text-2xl text-rose-light">Savi</p>
                 <p className="text-xs text-cream/60">засновниця Body by Savi</p>
               </div>
             </div>
 
-            <div className="mt-5 grid grid-cols-3 gap-3">
+            <div className="mt-5 grid grid-cols-2 gap-3">
               {[
                 { k: '−9', s: 'кг власного шляху' },
-                { k: '21', s: 'день системи' },
                 { k: '500+', s: 'дівчат у клубі' },
               ].map((it) => (
                 <div key={it.k} className="glass rounded-2xl px-3 py-4 text-center">

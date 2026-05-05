@@ -14,8 +14,11 @@ const pillars = [
   },
   {
     tag: 'Харчування',
-    title: 'лекції про харчування, які змінять твоє сприйняття їжі',
-    body: 'Розберемо вплив харчування на твою красу. Смачні і легкі рецепти, які переконають, що корисне може бути дуже смачним. Невеличке завдання, після якого твоє сприйняття їжі зміниться.',
+    title: 'лекції про харчування, з якими ти розбереш і зрозумієш його вплив на твою красу',
+    bullets: [
+      'смачні і легкі рецепти, які переконають тебе, що корисне може бути смачним',
+      'невеличке завдання, після якого твоє сприйняття їжі зміниться',
+    ],
     accent: 'from-rose-light to-rose',
   },
   {
@@ -50,7 +53,7 @@ const bonuses = [
 
 export default function SystemBlock() {
   return (
-    <section id="system" className="relative z-10 px-6 py-28 sm:py-36">
+    <section id="system" className="relative z-10 px-5 py-20 sm:px-6 sm:py-28 md:py-36">
       <div className="mx-auto max-w-6xl">
         <motion.div
           initial="hidden"
@@ -59,10 +62,7 @@ export default function SystemBlock() {
           variants={fadeIn}
           className="mb-16 max-w-3xl"
         >
-          <span className="font-mono text-xs uppercase tracking-[0.3em] text-rose-light/70">
-            Блок 02 · наповненість марафону
-          </span>
-          <h2 className="mt-4 font-display text-4xl leading-tight text-cream sm:text-5xl md:text-6xl">
+          <h2 className="font-display text-4xl leading-tight text-cream sm:text-5xl md:text-6xl">
             Система змін:
             <br />
             <em className="text-gradient-plum">всередині марафону</em>
@@ -93,7 +93,22 @@ export default function SystemBlock() {
               <h3 className="mt-5 font-display text-2xl leading-snug text-cream">
                 {p.title}
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-cream/70">{p.body}</p>
+              {p.body && (
+                <p className="mt-3 text-sm leading-relaxed text-cream/70">{p.body}</p>
+              )}
+              {p.bullets && (
+                <ul className="mt-3 space-y-2">
+                  {p.bullets.map((b) => (
+                    <li
+                      key={b}
+                      className="flex items-start gap-2 text-sm leading-relaxed text-cream/70"
+                    >
+                      <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-gradient-to-r from-rose to-plum" />
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </motion.article>
           ))}
         </div>
@@ -154,7 +169,7 @@ export default function SystemBlock() {
           >
             Я готова до змін →
           </a>
-          <p className="font-script text-base text-rose-light/80">
+          <p className="font-display italic text-base text-rose-light/80">
             старт одразу після оплати
           </p>
         </motion.div>

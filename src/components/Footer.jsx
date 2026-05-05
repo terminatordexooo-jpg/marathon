@@ -6,7 +6,7 @@ export default function Footer() {
           <p className="font-display text-2xl text-cream">
             Body by <span className="italic text-gradient-rose">Savi</span>
           </p>
-          <p className="mt-1 font-script text-base text-rose-light/80">клуб змін</p>
+          <p className="mt-1 font-display italic text-base text-rose-light/80">клуб змін</p>
         </div>
         <div className="text-xs text-cream/55">
           <p>© {new Date().getFullYear()} Body by Savi. Усі права захищені.</p>

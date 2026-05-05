@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import ScrollProgress from './components/ScrollProgress.jsx'
 import AuroraBackdrop from './components/AuroraBackdrop.jsx'
-import ThunderClouds from './components/ThunderClouds.jsx'
 import HeroSection from './components/HeroSection.jsx'
 import WhoAmIBlock from './components/WhoAmIBlock.jsx'
 import SystemBlock from './components/SystemBlock.jsx'
@@ -21,11 +20,7 @@ export default function App() {
   }, [])
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-night-900 text-cream">
-      <div className="pointer-events-none fixed inset-0 z-0">
-        <ThunderClouds />
-      </div>
-      <div className="pointer-events-none fixed inset-0 z-[1] bg-black/70" />
+    <div className="relative min-h-screen overflow-hidden bg-night-700 text-cream">
       <AuroraBackdrop />
       <ScrollProgress />
       <HeroSection />
