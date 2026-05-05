@@ -33,13 +33,7 @@ export default function HeroSection() {
           Body by{' '}
           <span className="font-display italic font-bold text-gradient-rose">Savi</span>
           <br />
-          <span
-            className="font-display italic mt-2 inline-block text-4xl font-medium tracking-tight text-rose-light sm:text-6xl md:text-7xl"
-            style={{
-              textShadow:
-                '0 0 14px rgba(232,167,181,0.55), 0 0 32px rgba(232,167,181,0.35), 0 0 60px rgba(155,107,255,0.3)',
-            }}
-          >
+          <span className="mt-5 inline-block text-sm font-medium uppercase tracking-[0.5em] text-rose-light/85 sm:text-base sm:tracking-[0.6em]">
             клуб змін
           </span>
         </motion.h1>
@@ -69,7 +63,7 @@ export default function HeroSection() {
             </span>
             <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-rose-light via-rose to-plum opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-30" />
           </a>
-          <span className="font-display italic text-base text-rose-light/80 tracking-wide">
+          <span className="text-[11px] uppercase tracking-[0.35em] text-rose-light/70">
             старт — одразу після оплати
           </span>
         </motion.div>
