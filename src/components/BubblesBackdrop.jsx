@@ -12,24 +12,22 @@ const PALETTE = [
 function makeBubbles(count) {
   const arr = []
   for (let i = 0; i < count; i++) {
-    // Power curve so most bubbles are small but a handful are huge,
-    // matching the reference's scale variance.
     const r = Math.random()
-    const scale = 0.45 + Math.pow(r, 2.4) * 4.2
+    // Tight scale range — biggest bubble ≈ 1/3 of viewport
+    const scale = 0.25 + Math.pow(r, 2.2) * 1.4
     arr.push({
       position: [
-        (Math.random() - 0.5) * 26,
-        (Math.random() - 0.5) * 18,
-        -Math.random() * 14,
+        (Math.random() - 0.5) * 30,
+        (Math.random() - 0.5) * 22,
+        // Pushed deep so even big bubbles read as background, not foreground
+        -8 - Math.random() * 18,
       ],
       scale,
       color: PALETTE[Math.floor(Math.random() * PALETTE.length)],
-      // bigger bubbles drift slower (mass feel)
-      speed: 0.4 + (1 - r) * 0.9,
-      rotation: 0.15 + Math.random() * 0.6,
-      float: 0.4 + Math.random() * 1.2,
-      // closer (bigger) bubbles parallax stronger
-      parallax: 0.6 + scale * 0.8,
+      speed: 0.3 + (1 - r) * 0.8,
+      rotation: 0.1 + Math.random() * 0.5,
+      float: 0.3 + Math.random() * 1.0,
+      parallax: 0.5 + scale * 0.5,
       seed: Math.random() * Math.PI * 2,
     })
   }
@@ -114,7 +112,7 @@ export default function BubblesBackdrop() {
     <div className="pointer-events-none fixed inset-0 z-[1]">
       <Canvas
         dpr={[1, 1.6]}
-        camera={{ position: [0, 0, 14], fov: 45 }}
+        camera={{ position: [0, 0, 18], fov: 35 }}
         gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
       >
         {/* hi-key lighting: strong top key + soft pink fill, no harsh shadows */}
