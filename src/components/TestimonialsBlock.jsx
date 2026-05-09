@@ -35,10 +35,10 @@ export default function TestimonialsBlock() {
           variants={fadeIn}
           className="mb-14 max-w-3xl text-center mx-auto"
         >
-          <h2 className="font-sans text-4xl font-black tracking-tight text-cream sm:text-5xl md:text-6xl">
+          <h2 className="font-sans text-4xl font-black tracking-tight text-ink sm:text-5xl md:text-6xl">
             Відгуки та результати <span className="text-gradient-rose">дівчат</span>
           </h2>
-          <p className="mt-5 font-display italic text-base text-rose-light/85 sm:text-lg">
+          <p className="mt-5 font-display italic text-base text-rose-deep/85 sm:text-lg">
             ↓ гортай, щоб побачити результати дівчаток
           </p>
         </motion.div>
@@ -70,7 +70,7 @@ export default function TestimonialsBlock() {
                     {phoneList.map((src, i) => (
                       <div
                         key={src}
-                        className="overflow-hidden rounded-2xl border border-white/5 bg-night-800/60"
+                        className="overflow-hidden rounded-2xl border border-white/5 bg-white/70"
                       >
                         <img
                           src={src}
@@ -97,16 +97,16 @@ export default function TestimonialsBlock() {
           className="mt-16 mx-auto max-w-3xl"
         >
           <div className="glass rounded-[1.75rem] p-7 sm:p-9">
-            <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-rose-light/80">
+            <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-rose-deep/80">
               Особистий шлях Savi
             </span>
-            <h3 className="mt-3 font-display text-3xl text-cream">−9 кг</h3>
-            <p className="mt-3 text-cream/75 leading-relaxed">
+            <h3 className="mt-3 font-display text-3xl text-ink">−9 кг</h3>
+            <p className="mt-3 text-ink/75 leading-relaxed">
               Не маркетингова цифра, а стабільний стан, який тримається не
               на дієтах, а на системі. Це доказ, що Body by Savi — не
               «мінус 5 кг за 7 днів», а підхід, який залишається з тобою.
             </p>
-            <p className="mt-4 font-display italic text-2xl text-rose-light">
+            <p className="mt-4 font-display italic text-2xl text-rose-deep">
               Я — результат того, що даю.
             </p>
 
@@ -117,7 +117,7 @@ export default function TestimonialsBlock() {
               ].map((p) => (
                 <figure
                   key={p.label}
-                  className="relative overflow-hidden rounded-2xl border border-white/10 bg-night-800/60"
+                  className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/70"
                 >
                   <img
                     src={p.src}
@@ -125,7 +125,7 @@ export default function TestimonialsBlock() {
                     loading="lazy"
                     className="block aspect-[3/4] w-full object-cover"
                   />
-                  <figcaption className="absolute left-3 top-3 rounded-full bg-night-900/65 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.25em] text-cream/85 backdrop-blur">
+                  <figcaption className="absolute left-3 top-3 rounded-full bg-ink/80 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.25em] text-cream backdrop-blur">
                     {p.label}
                   </figcaption>
                 </figure>
@@ -142,12 +142,12 @@ export default function TestimonialsBlock() {
           className="mt-14 max-w-3xl"
         >
           <div className="glass-rose rounded-[1.75rem] p-7 sm:p-9">
-            <p className="font-display text-xl italic leading-relaxed text-cream sm:text-2xl">
+            <p className="font-display text-xl italic leading-relaxed text-ink sm:text-2xl">
               «Тут не буде окремих тарифів, як на інших марафонах: лише
               харчування або лише тренування. Чому? Тому що результат
               не складається з чогось одного.
               <br /><br />
-              Результат — це <em className="text-rose-light">система</em>.
+              Результат — це <em className="text-rose-deep">система</em>.
               Харчування, спорт і мислення працюють разом. І я відкрию
               тобі всі ключові елементи змін.»
             </p>

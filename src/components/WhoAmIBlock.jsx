@@ -16,10 +16,10 @@ export default function WhoAmIBlock() {
           variants={fadeIn}
           className="mb-14 max-w-3xl"
         >
-          <span className="font-mono text-xs uppercase tracking-[0.3em] text-rose-light/70">
+          <span className="font-mono text-xs uppercase tracking-[0.3em] text-rose-deep/70">
             знайомство
           </span>
-          <h2 className="mt-4 font-display text-4xl leading-tight text-cream sm:text-5xl md:text-6xl">
+          <h2 className="mt-4 font-display text-4xl leading-tight text-ink sm:text-5xl md:text-6xl">
             Хто я? <em className="text-gradient-rose">І чому ти маєш</em>
             <br />
             довіритись саме мені?
@@ -43,8 +43,8 @@ export default function WhoAmIBlock() {
                   key={it.k}
                   className="glass-rose rounded-3xl px-5 py-10 text-center ring-glow"
                 >
-                  <div className="font-display text-5xl text-cream sm:text-6xl">{it.k}</div>
-                  <div className="mt-3 text-[11px] uppercase tracking-[0.2em] text-cream/65">
+                  <div className="font-display text-5xl text-ink sm:text-6xl">{it.k}</div>
+                  <div className="mt-3 text-[11px] uppercase tracking-[0.2em] text-ink/65">
                     {it.s}
                   </div>
                 </div>
@@ -57,10 +57,10 @@ export default function WhoAmIBlock() {
             whileInView="show"
             viewport={{ once: true, margin: '-10%' }}
             variants={fadeIn}
-            className="space-y-6 text-cream/85 md:col-span-7"
+            className="space-y-6 text-ink/85 md:col-span-7"
           >
             <div className="glass rounded-[1.75rem] p-7 sm:p-8">
-              <p className="font-display text-2xl italic text-rose-light">
+              <p className="font-display text-2xl italic text-rose-deep">
                 «Я — Savi, засновниця системи Body by Savi і людина, яка
                 пройшла шлях змін не тільки фізично, а й внутрішньо.»
               </p>
@@ -69,11 +69,11 @@ export default function WhoAmIBlock() {
             <p className="leading-relaxed">
               Від небажання дивитись на себе в дзеркало я прийшла до фігури
               мрії та любові до себе. Мій досвід{' '}
-              <span className="text-rose-light">−9 кг</span> — не як короткий
+              <span className="text-rose-deep">−9 кг</span> — не як короткий
               результат, а як стабільний стан.
             </p>
 
-            <p className="leading-relaxed text-cream/75">
+            <p className="leading-relaxed text-ink/75">
               Я знаю, як це: жити з постійними думками про їжу, дивитись на
               себе в дзеркало і бути «майже задоволеною», починати «з
               понеділка» знову і знову.
@@ -85,26 +85,26 @@ export default function WhoAmIBlock() {
             </p>
 
             <div className="glass-rose rounded-[1.75rem] p-7 sm:p-8">
-              <h3 className="font-display text-2xl text-cream">
+              <h3 className="font-display text-2xl text-ink">
                 Чому тобі варто довіритись саме мені?
               </h3>
-              <p className="mt-3 text-cream/80">
+              <p className="mt-3 text-ink/80">
                 Тут все просто: я — результат того, що даю.
               </p>
-              <p className="mt-3 text-cream/75">
+              <p className="mt-3 text-ink/75">
                 Якщо тобі відгукується моя естетика — підтягнуте тіло, рельєф
                 без «перекачаності», соковиті сідниці без масивних ніг,
                 баланс жіночності та сили — значить, мій підхід може
                 відгукнутись і тобі.
               </p>
-              <p className="mt-3 text-cream/75">
+              <p className="mt-3 text-ink/75">
                 Я не продаю «мінус 5 кг за 7 днів». Я даю інструменти, з
                 якими ти зможеш стати кращою версією себе.
               </p>
             </div>
 
             <div>
-              <h4 className="font-display text-xl text-cream">Мій підхід — це:</h4>
+              <h4 className="font-display text-xl text-ink">Мій підхід — це:</h4>
               <ul className="mt-4 grid gap-2.5">
                 {[
                   'баланс без заборон',
@@ -113,7 +113,7 @@ export default function WhoAmIBlock() {
                   'харчування без зривів',
                   'зміни через любов до себе',
                 ].map((line) => (
-                  <li key={line} className="flex items-start gap-3 text-cream/80">
+                  <li key={line} className="flex items-start gap-3 text-ink/80">
                     <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-r from-rose to-plum" />
                     <span>{line}</span>
                   </li>
@@ -121,14 +121,14 @@ export default function WhoAmIBlock() {
               </ul>
             </div>
 
-            <p className="text-cream/70">
+            <p className="text-ink/70">
               Я працюю не тільки з тілом, а з причинами: переїдання, набряки,
               нестабільна вага, відсутність енергії та мотивації.
             </p>
 
             <a
               href="#pricing"
-              className="inline-flex items-center gap-2 rounded-full bg-cream px-7 py-3 text-sm font-semibold text-night-900 transition-transform hover:scale-[1.03] glow-rose"
+              className="inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3 text-sm font-semibold text-white transition-transform hover:scale-[1.03] glow-rose"
             >
               Я готова до змін →
             </a>

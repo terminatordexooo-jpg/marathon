@@ -13,6 +13,14 @@ export default {
           500: '#231832',
         },
         cream: '#F4EEE4',
+        ink: {
+          DEFAULT: '#1A1815',
+          900: '#0F0E0C',
+          700: '#1A1815',
+          500: '#3F3B35',
+          400: '#5C564E',
+          300: '#807870',
+        },
         rose: {
           DEFAULT: '#E8A7B5',
           light: '#F2C9D2',

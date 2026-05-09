@@ -62,7 +62,7 @@ export default function SystemBlock() {
           variants={fadeIn}
           className="mb-16 max-w-3xl"
         >
-          <h2 className="font-display text-4xl leading-tight text-cream sm:text-5xl md:text-6xl">
+          <h2 className="font-display text-4xl leading-tight text-ink sm:text-5xl md:text-6xl">
             Система змін:
             <br />
             <em className="text-gradient-plum">всередині марафону</em>
@@ -83,21 +83,21 @@ export default function SystemBlock() {
               <div
                 className={`absolute -top-20 -right-20 h-44 w-44 rounded-full bg-gradient-to-br ${p.accent} opacity-25 blur-3xl transition-opacity group-hover:opacity-50`}
               />
-              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-rose-light/80">
+              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-rose-deep/80">
                 0{i + 1} · {p.tag}
               </span>
-              <h3 className="mt-5 font-display text-2xl leading-snug text-cream">
+              <h3 className="mt-5 font-display text-2xl leading-snug text-ink">
                 {p.title}
               </h3>
               {p.body && (
-                <p className="mt-3 text-sm leading-relaxed text-cream/70">{p.body}</p>
+                <p className="mt-3 text-sm leading-relaxed text-ink/70">{p.body}</p>
               )}
               {p.bullets && (
                 <ul className="mt-3 space-y-2">
                   {p.bullets.map((b) => (
                     <li
                       key={b}
-                      className="flex items-start gap-2 text-sm leading-relaxed text-cream/70"
+                      className="flex items-start gap-2 text-sm leading-relaxed text-ink/70"
                     >
                       <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-gradient-to-r from-rose to-plum" />
                       <span>{b}</span>
@@ -117,15 +117,15 @@ export default function SystemBlock() {
           className="mt-12 grid gap-6 md:grid-cols-2"
         >
           <div className="glass rounded-[1.75rem] p-7 sm:p-8">
-            <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-rose-light/80">
+            <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-rose-deep/80">
               Лекції
             </span>
-            <h3 className="mt-3 font-display text-2xl text-cream">
+            <h3 className="mt-3 font-display text-2xl text-ink">
               Глибокий розбір — не просто список вправ
             </h3>
             <ul className="mt-5 space-y-3">
               {lectures.map((l) => (
-                <li key={l} className="flex items-start gap-3 text-cream/80">
+                <li key={l} className="flex items-start gap-3 text-ink/80">
                   <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-r from-rose to-plum" />
                   <span className="leading-relaxed">{l}</span>
                 </li>
@@ -135,17 +135,17 @@ export default function SystemBlock() {
 
           <div className="relative overflow-hidden rounded-[1.75rem] glass-rose p-7 sm:p-8">
             <div className="absolute -top-16 -right-16 h-48 w-48 rounded-full bg-gradient-to-br from-rose to-plum opacity-30 blur-3xl" />
-            <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-rose-light">
+            <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-rose-deep">
               🎁 Бонуси
             </span>
-            <h3 className="mt-3 font-display text-2xl text-cream">
+            <h3 className="mt-3 font-display text-2xl text-ink">
               Усе, що зазвичай продають окремо — тут включено
             </h3>
             <div className="mt-5 space-y-4">
               {bonuses.map((b) => (
-                <div key={b.title} className="rounded-2xl bg-night-900/40 p-4">
-                  <p className="text-sm font-semibold text-cream">{b.title}</p>
-                  <p className="mt-1 text-xs text-cream/60">{b.sub}</p>
+                <div key={b.title} className="rounded-2xl bg-white/65 p-4">
+                  <p className="text-sm font-semibold text-ink">{b.title}</p>
+                  <p className="mt-1 text-xs text-ink/60">{b.sub}</p>
                 </div>
               ))}
             </div>
@@ -161,11 +161,11 @@ export default function SystemBlock() {
         >
           <a
             href="#pricing"
-            className="inline-flex items-center gap-2 rounded-full bg-cream px-9 py-4 text-sm font-semibold text-night-900 transition-transform hover:scale-[1.03] glow-rose"
+            className="inline-flex items-center gap-2 rounded-full bg-ink px-9 py-4 text-sm font-semibold text-white transition-transform hover:scale-[1.03] glow-rose"
           >
             Я готова до змін →
           </a>
-          <p className="font-display italic text-base text-rose-light/80">
+          <p className="font-display italic text-base text-rose-deep/80">
             старт одразу після оплати
           </p>
         </motion.div>
