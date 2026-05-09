@@ -13,7 +13,7 @@ export default function Footer() {
           <p className="mt-1">
             Питання —{' '}
             <a
-              href="https://t.me/daria_savitskaya"
+              href="https://www.instagram.com/daria.savitskaya"
               target="_blank"
               rel="noopener noreferrer"
               className="text-cream underline-offset-4 hover:underline"

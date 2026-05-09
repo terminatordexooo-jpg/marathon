@@ -5,8 +5,8 @@
 @layer base {
   html { scroll-behavior: smooth; }
   body {
-    background-color: #100B1F;
-    color: #F4EEE4;
+    background-color: #FFFFFF;
+    color: #1A1815;
     font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
