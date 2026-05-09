@@ -19,7 +19,7 @@ export default function WhoAmIBlock() {
           <span className="font-mono text-xs uppercase tracking-[0.3em] text-rose-deep/70">
             знайомство
           </span>
-          <h2 className="mt-4 font-display text-4xl leading-tight text-ink sm:text-5xl md:text-6xl">
+          <h2 className="mt-4 font-display text-4xl font-bold leading-tight text-[#0E0D0B] [text-shadow:0_2px_18px_rgba(255,255,255,0.7)] sm:text-5xl md:text-6xl">
             Хто я? <em className="text-gradient-rose">І чому ти маєш</em>
             <br />
             довіритись саме мені?

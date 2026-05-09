@@ -62,7 +62,7 @@ export default function SystemBlock() {
           variants={fadeIn}
           className="mb-16 max-w-3xl"
         >
-          <h2 className="font-display text-4xl leading-tight text-ink sm:text-5xl md:text-6xl">
+          <h2 className="font-display text-4xl font-bold leading-tight text-[#0E0D0B] [text-shadow:0_2px_18px_rgba(255,255,255,0.6)] sm:text-5xl md:text-6xl">
             Система змін:
             <br />
             <em className="text-gradient-plum">всередині марафону</em>

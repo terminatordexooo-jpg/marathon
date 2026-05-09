@@ -35,7 +35,7 @@ export default function TestimonialsBlock() {
           variants={fadeIn}
           className="mb-14 max-w-3xl text-center mx-auto"
         >
-          <h2 className="font-sans text-4xl font-black tracking-tight text-ink sm:text-5xl md:text-6xl">
+          <h2 className="font-sans text-4xl font-black tracking-tight text-[#0E0D0B] [text-shadow:0_2px_18px_rgba(255,255,255,0.7)] sm:text-5xl md:text-6xl">
             Відгуки та результати <span className="text-gradient-rose">дівчат</span>
           </h2>
           <p className="mt-5 font-display italic text-base text-rose-deep/85 sm:text-lg">
