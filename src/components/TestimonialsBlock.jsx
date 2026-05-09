@@ -109,6 +109,28 @@ export default function TestimonialsBlock() {
             <p className="mt-4 font-display italic text-2xl text-rose-light">
               Я — результат того, що даю.
             </p>
+
+            <div className="mt-7 grid grid-cols-2 gap-3 sm:gap-4">
+              {[
+                { src: `${import.meta.env.BASE_URL}savi/before.jpg`, label: 'до' },
+                { src: `${import.meta.env.BASE_URL}savi/after.jpg`, label: 'після' },
+              ].map((p) => (
+                <figure
+                  key={p.label}
+                  className="relative overflow-hidden rounded-2xl border border-white/10 bg-night-800/60"
+                >
+                  <img
+                    src={p.src}
+                    alt={`Savi ${p.label}`}
+                    loading="lazy"
+                    className="block aspect-[3/4] w-full object-cover"
+                  />
+                  <figcaption className="absolute left-3 top-3 rounded-full bg-night-900/65 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.25em] text-cream/85 backdrop-blur">
+                    {p.label}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
           </div>
         </motion.div>
 
