@@ -67,10 +67,6 @@ export default function SystemBlock() {
             <br />
             <em className="text-gradient-plum">всередині марафону</em>
           </h2>
-          <p className="mt-5 text-cream/70">
-            21 день структури, де тренування, харчування і мислення працюють
-            разом — без крайнощів, без виснаження.
-          </p>
         </motion.div>
 
         <div className="grid gap-5 md:grid-cols-3">

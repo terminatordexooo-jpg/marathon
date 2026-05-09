@@ -25,23 +25,6 @@ export default function PricingBlock({ onSuccessPreview }) {
   return (
     <section id="pricing" className="relative z-10 px-5 py-20 sm:px-6 sm:py-28 md:py-36">
       <div className="mx-auto max-w-6xl">
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: '-15%' }}
-          variants={fadeIn}
-          className="mb-14 max-w-3xl"
-        >
-          <span className="font-mono text-xs uppercase tracking-[0.3em] text-rose-light/70">
-            Блок 04 · ціна
-          </span>
-          <h2 className="mt-4 font-display text-4xl leading-tight text-cream sm:text-5xl md:text-6xl">
-            Бажаєш розпочати шлях до
-            <br />
-            <em className="text-gradient-rose">кращої версії себе</em> вже зараз?
-          </h2>
-        </motion.div>
-
         <div className="grid gap-8 md:grid-cols-12">
           <motion.div
             initial="hidden"

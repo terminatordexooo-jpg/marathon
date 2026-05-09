@@ -38,6 +38,9 @@ export default function TestimonialsBlock() {
           <h2 className="font-sans text-4xl font-black tracking-tight text-cream sm:text-5xl md:text-6xl">
             Відгуки та результати <span className="text-gradient-rose">дівчат</span>
           </h2>
+          <p className="mt-5 font-display italic text-base text-rose-light/85 sm:text-lg">
+            ↓ гортай, щоб побачити результати дівчаток
+          </p>
         </motion.div>
 
         <motion.div

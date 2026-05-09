@@ -34,30 +34,17 @@ export default function WhoAmIBlock() {
             variants={fadeIn}
             className="md:col-span-5"
           >
-            <div className="relative overflow-hidden rounded-[2rem] glass ring-glow">
-              <video
-                src={`${import.meta.env.BASE_URL}savi/savi-video.mp4`}
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="aspect-[3/4] w-full object-cover"
-              />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-night-900/80 via-transparent to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-5">
-                <p className="font-display italic text-2xl text-rose-light">Savi</p>
-                <p className="text-xs text-cream/60">засновниця Body by Savi</p>
-              </div>
-            </div>
-
-            <div className="mt-5 grid grid-cols-2 gap-3">
+            <div className="md:sticky md:top-24 grid grid-cols-2 gap-4">
               {[
                 { k: '−9', s: 'кг власного шляху' },
                 { k: '500+', s: 'дівчат у клубі' },
               ].map((it) => (
-                <div key={it.k} className="glass rounded-2xl px-3 py-4 text-center">
-                  <div className="font-display text-3xl text-cream">{it.k}</div>
-                  <div className="mt-1 text-[10px] uppercase tracking-wider text-cream/55">
+                <div
+                  key={it.k}
+                  className="glass-rose rounded-3xl px-5 py-10 text-center ring-glow"
+                >
+                  <div className="font-display text-5xl text-cream sm:text-6xl">{it.k}</div>
+                  <div className="mt-3 text-[11px] uppercase tracking-[0.2em] text-cream/65">
                     {it.s}
                   </div>
                 </div>
