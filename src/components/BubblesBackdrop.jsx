@@ -3,31 +3,33 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { Environment, Float } from '@react-three/drei'
 import * as THREE from 'three'
 
-// matte clay palette — soft pinks + whites (per reference)
-const PALETTE = ['#FFFFFF', '#FBE9E9', '#F6D2D2', '#EFB8C0', '#E89BA8', '#D88B96']
+// pmndrs hi-key-bubbles palette: white-heavy with pastel pink accents
+const PALETTE = [
+  '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FBEFEF',
+  '#F5D2D6', '#F0BAC2', '#E89BA8', '#D88B96',
+]
 
 function makeBubbles(count) {
   const arr = []
   for (let i = 0; i < count; i++) {
-    // ~40% are big foreground bubbles, rest are smaller depth
-    const big = Math.random() < 0.4
-    const scale = big ? 1.1 + Math.random() * 1.6 : 0.3 + Math.random() * 0.7
-    // big bubbles biased to the sides — leave the headline column readable
-    const sign = Math.random() < 0.5 ? -1 : 1
-    const x = big
-      ? sign * (4.5 + Math.random() * 5.5)
-      : (Math.random() - 0.5) * 18
-    // big ones live closer to camera, small ones in deep background
-    const z = big ? -1 - Math.random() * 3 : -5 - Math.random() * 6
+    // Power curve so most bubbles are small but a handful are huge,
+    // matching the reference's scale variance.
+    const r = Math.random()
+    const scale = 0.45 + Math.pow(r, 2.4) * 4.2
     arr.push({
-      position: [x, (Math.random() - 0.5) * 14, z],
+      position: [
+        (Math.random() - 0.5) * 26,
+        (Math.random() - 0.5) * 18,
+        -Math.random() * 14,
+      ],
       scale,
       color: PALETTE[Math.floor(Math.random() * PALETTE.length)],
-      speed: 0.3 + Math.random() * 0.7,
-      rotation: 0.1 + Math.random() * 0.7,
-      float: 0.4 + Math.random() * 1.0,
-      // strong scroll parallax — closer bubbles fly past faster
-      parallax: big ? 2.5 + Math.random() * 2.5 : 0.8 + Math.random() * 1.5,
+      // bigger bubbles drift slower (mass feel)
+      speed: 0.4 + (1 - r) * 0.9,
+      rotation: 0.15 + Math.random() * 0.6,
+      float: 0.4 + Math.random() * 1.2,
+      // closer (bigger) bubbles parallax stronger
+      parallax: 0.6 + scale * 0.8,
       seed: Math.random() * Math.PI * 2,
     })
   }
@@ -43,28 +45,23 @@ function Bubble({ data, scrollRef }) {
     if (!ref.current) return
     const t = state.clock.getElapsedTime()
     const s = scrollRef.current
-    // strong vertical drift on scroll + slight forward push so bubbles fly past camera
     ref.current.position.y =
-      baseY + Math.sin(t * 0.4 + data.seed) * 0.2 - s * data.parallax
+      baseY + Math.sin(t * 0.35 + data.seed) * 0.25 - s * data.parallax
     ref.current.position.x =
-      data.position[0] + Math.cos(t * 0.3 + data.seed) * 0.18
-    ref.current.position.z = baseZ + s * data.parallax * 0.6
-    ref.current.rotation.x += delta * 0.15 * data.speed + s * 0.0002
-    ref.current.rotation.y += delta * 0.22 * data.speed
+      data.position[0] + Math.cos(t * 0.28 + data.seed) * 0.2
+    ref.current.position.z = baseZ + s * data.parallax * 0.5
+    ref.current.rotation.x += delta * 0.12 * data.speed
+    ref.current.rotation.y += delta * 0.18 * data.speed
   })
 
   return (
     <Float speed={data.speed} rotationIntensity={data.rotation} floatIntensity={data.float}>
-      <mesh ref={ref} position={data.position} scale={data.scale} castShadow receiveShadow>
+      <mesh ref={ref} position={data.position} scale={data.scale}>
         <sphereGeometry args={[1, 64, 64]} />
-        <meshPhysicalMaterial
+        <meshStandardMaterial
           color={data.color}
           roughness={0.45}
           metalness={0}
-          clearcoat={0.4}
-          clearcoatRoughness={0.55}
-          sheen={0.5}
-          sheenColor="#FFFFFF"
         />
       </mesh>
     </Float>
@@ -72,23 +69,23 @@ function Bubble({ data, scrollRef }) {
 }
 
 function Scene({ scrollRef }) {
-  const bubbles = useMemo(() => makeBubbles(34), [])
+  // 60 bubbles → fills the screen densely like the reference
+  const bubbles = useMemo(() => makeBubbles(60), [])
   const group = useRef(null)
 
   useFrame((state) => {
     if (!group.current) return
     const { x, y } = state.pointer
     const s = scrollRef.current
-    // mouse parallax + scroll-driven group rotation
     group.current.rotation.y = THREE.MathUtils.lerp(
       group.current.rotation.y,
-      x * 0.15 + s * 0.1,
-      0.05
+      x * 0.08 + s * 0.06,
+      0.04
     )
     group.current.rotation.x = THREE.MathUtils.lerp(
       group.current.rotation.x,
-      -y * 0.1 + s * 0.05,
-      0.05
+      -y * 0.06 + s * 0.03,
+      0.04
     )
   })
 
@@ -106,8 +103,7 @@ export default function BubblesBackdrop() {
 
   useEffect(() => {
     const onScroll = () => {
-      // amplify so even small scrolls visibly move the scene
-      scrollRef.current = (window.scrollY / window.innerHeight) * 1.6
+      scrollRef.current = (window.scrollY / window.innerHeight) * 1.4
     }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -118,14 +114,14 @@ export default function BubblesBackdrop() {
     <div className="pointer-events-none fixed inset-0 z-[1]">
       <Canvas
         dpr={[1, 1.6]}
-        camera={{ position: [0, 0, 12], fov: 38 }}
+        camera={{ position: [0, 0, 14], fov: 45 }}
         gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
       >
-        <ambientLight intensity={0.45} color="#FFFFFF" />
-        {/* strong top-key light → crisp highlights, soft pink gradient on the dark side */}
-        <directionalLight position={[3, 9, 5]} intensity={2.6} color="#FFFFFF" />
-        <directionalLight position={[-4, -2, 4]} intensity={0.55} color="#F6D2D2" />
-        <pointLight position={[6, -3, 3]} intensity={0.8} color="#FBE9E9" />
+        {/* hi-key lighting: strong top key + soft pink fill, no harsh shadows */}
+        <ambientLight intensity={0.7} color="#FFFFFF" />
+        <directionalLight position={[3, 10, 5]} intensity={2.4} color="#FFFFFF" />
+        <directionalLight position={[-6, 4, 4]} intensity={0.9} color="#FBEFEF" />
+        <pointLight position={[0, -6, 6]} intensity={0.4} color="#F5D2D6" />
 
         <Suspense fallback={null}>
           <Scene scrollRef={scrollRef} />
