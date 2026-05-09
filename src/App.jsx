@@ -3,6 +3,7 @@ import ScrollProgress from './components/ScrollProgress.jsx'
 import AuroraBackdrop from './components/AuroraBackdrop.jsx'
 import BubblesBackdrop from './components/BubblesBackdrop.jsx'
 import HeroSection from './components/HeroSection.jsx'
+import SaviIntroVideo from './components/SaviIntroVideo.jsx'
 import WhoAmIBlock from './components/WhoAmIBlock.jsx'
 import SystemBlock from './components/SystemBlock.jsx'
 import TestimonialsBlock from './components/TestimonialsBlock.jsx'
@@ -26,6 +27,7 @@ export default function App() {
       <BubblesBackdrop />
       <ScrollProgress />
       <HeroSection />
+      <SaviIntroVideo />
       <WhoAmIBlock />
       <SystemBlock />
       <TestimonialsBlock />
