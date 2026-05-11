@@ -57,7 +57,7 @@ export default function WhoAmIBlock() {
             whileInView="show"
             viewport={{ once: true, margin: '-10%' }}
             variants={fadeIn}
-            className="mx-auto max-w-2xl space-y-6 text-center text-ink/85 md:col-span-7 md:mx-0 md:max-w-none md:text-left"
+            className="space-y-6 text-ink/85 md:col-span-7"
           >
             <div className="glass rounded-[1.75rem] p-7 sm:p-8">
               <p className="font-display text-2xl italic text-rose-deep">
