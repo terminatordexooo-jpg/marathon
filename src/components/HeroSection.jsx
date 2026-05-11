@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 
 export default function HeroSection() {
   return (
-    <section className="relative isolate min-h-[100svh] overflow-hidden">
+    <section className="relative isolate z-10 min-h-[100svh] overflow-hidden">
       {/* soft white halo behind copy so headline reads on bubbles */}
       <div
         aria-hidden
